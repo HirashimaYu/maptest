@@ -17,7 +17,7 @@
         });
 
         // JSONデータ取得
-        const response = await fetch("https://script.google.com/macros/s/AKfycbzU_0AkGHuk0vkYMcgRrdpOkzsq58oVsgVHGT0Tipq5KkkpG-hDOw5nnoDyXaIo72GN4Q/exec");
+        const response = await fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbz8aQQnwtK6X_lNOFXSLMuZz46e_U9gcKdDwbscUbfItYcdr5VAU1mEyttQnr4aDD1HHg/exec/exec");
         const data = await response.json();
 
         // 各地点をマップに表示
