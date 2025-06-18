@@ -39,7 +39,7 @@
 
         data.forEach(place => {
 
-          const marker = new google.maps.Marker({
+          const marker = new google.maps.marker.AdvancedMarkerElement({
             position: { lat: place.lat, lng: place.lng },
             map,
             title: place["行った現場の名前を教えてください"]
@@ -68,14 +68,14 @@
           div.className = "info-item";
           div.innerHTML = `<strong>${place["行った現場の名前を教えてください"]}</strong><br>
             ${place.info || "情報なし"}<br>
-            ${place["住所"]}
+            ${place[place]}
             `;
           sidebar.appendChild(div);
         });
       }
     </script>
     <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClN0LeQjAs9IYscEvrjqzT29G1efRkJK0&callback=initMap">
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClN0LeQjAs9IYscEvrjqzT29G1efRkJK0&callback=initMap&libraries=marker">
     </script>
   </head>
   <body>
