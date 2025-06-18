@@ -68,7 +68,7 @@
           div.className = "info-item";
           div.innerHTML = `<strong>${place["行った現場の名前を教えてください"]}</strong><br>
             ${place.info || "情報なし"}<br>
-            ${place[place]}
+            ${place.address}
             `;
           sidebar.appendChild(div);
         });
