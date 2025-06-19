@@ -23,8 +23,14 @@
         padding-bottom: 10px;
       }
     </style>
+  </head>
+  <body>
+    <div id="sidebar"></div>
+    <div id="map"></div>
+
     <script>
-      async function initMap() {
+      // 関数をグローバルに明示的に定義
+      window.initMap = async function () {
         const map = new google.maps.Map(document.getElementById("map"), {
           zoom: 10,
           center: { lat: 35.6762, lng: 139.6503 },
@@ -38,48 +44,43 @@
         const sidebar = document.getElementById("sidebar");
 
         data.forEach(place => {
-
-          const marker = new google.maps.Marker({
+          const marker = new google.maps.marker.Marker({
             position: { lat: place.lat, lng: place.lng },
             map,
             title: place["行った現場の名前を教えてください"]
           });
-            
+
           const content = `
             <div>
-              <strong>${place["行った現場の名前を教えてください"]}</strong>
-              <br><strong>${place.info || "情報なし"}</strong>
+              <strong>${place["行った現場の名前を教えてください"]}</strong><br>
+              <strong>${place.info || "情報なし"}</strong>
             </div>
           `;
 
-          // マウスオーバーで表示
           marker.addListener("mouseover", () => {
             infoWindow.setContent(content);
             infoWindow.open(map, marker);
           });
 
-          // マウスが離れたら閉じる（任意）
           marker.addListener("mouseout", () => {
             infoWindow.close();
           });
 
-          // サイドバーに追加
+          // 不要な ${place[place]} を削除
           const div = document.createElement("div");
           div.className = "info-item";
           div.innerHTML = `<strong>${place["行った現場の名前を教えてください"]}</strong><br>
-            ${place.info || "情報なし"}<br>
-            ${place[place]}
-            `;
+            ${place."そのほかの情報" || "情報なし"}<br>`
+            ${place."住所"};
           sidebar.appendChild(div);
         });
-      }
+      };
     </script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClN0LeQjAs9IYscEvrjqzT29G1efRkJK0&callback=initMap">
-    </script>
-  </head>
-  <body>
-    <div id="sidebar"></div>
-    <div id="map"></div>
+
+    <!-- ライブラリ指定とcallbackを指定 -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClN0LeQjAs9IYscEvrjqzT29G1efRkJK0&callback=initMap&libraries=marker"
+      defer
+    ></script>
   </body>
 </html>
