@@ -44,7 +44,7 @@
         const sidebar = document.getElementById("sidebar");
 
         data.forEach(place => {
-          const marker = new google.maps.marker.AdvancedMarkerElement({
+          const marker = new google.maps.marker.Marker({
             position: { lat: place.lat, lng: place.lng },
             map,
             title: place["行った現場の名前を教えてください"]
@@ -70,7 +70,8 @@
           const div = document.createElement("div");
           div.className = "info-item";
           div.innerHTML = `<strong>${place["行った現場の名前を教えてください"]}</strong><br>
-            ${place.info || "情報なし"}<br>`;
+            ${place.["そのほかの情報"] || ["情報なし"]}<br>
+            ${place.["住所"]};
           sidebar.appendChild(div);
         });
       };
