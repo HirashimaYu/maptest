@@ -1,7 +1,7 @@
-
+<!DOCTYPE html>
 <html>
   <head>
-    <title>マップに地点表示</title>
+    <title>マップに地点表示#readme</title>
     <style>
       #map {
         height: 100vh;
