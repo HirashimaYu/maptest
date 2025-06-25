@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>マップに地点表示#readme</title>
+    <title>マップに地点表示</title>
     <style>
       #map {
         height: 100vh;
@@ -44,7 +44,7 @@
         const sidebar = document.getElementById("sidebar");
 
         data.forEach(place => {
-          const marker = new google.maps.marker.Marker({
+          new google.maps.Marker({
             position: { lat: place.lat, lng: place.lng },
             map,
             title: place["行った現場の名前を教えてください"]
